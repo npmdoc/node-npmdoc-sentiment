@@ -1,9 +1,14 @@
-# api documentation for  [sentiment (v4.0.0)](https://github.com/thisandagain/sentiment)  [![npm package](https://img.shields.io/npm/v/npmdoc-sentiment.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sentiment) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sentiment.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sentiment)
+# npmdoc-sentiment
+
+#### api documentation for  [sentiment (v4.0.0)](https://github.com/thisandagain/sentiment)  [![npm package](https://img.shields.io/npm/v/npmdoc-sentiment.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sentiment) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sentiment.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sentiment)
+
 #### AFINN-based sentiment analysis for Node.js
 
-[![NPM](https://nodei.co/npm/sentiment.png?downloads=true)](https://www.npmjs.com/package/sentiment)
+[![NPM](https://nodei.co/npm/sentiment.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/sentiment)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-sentiment/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-sentiment_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-sentiment/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-sentiment/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-sentiment/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-sentiment/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-sentiment/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-sentiment/build/screenCapture.npmPackageListing.svg)
 
@@ -17,8 +22,7 @@
 
 {
     "author": {
-        "name": "Andrew Sliwinski",
-        "email": "andrewsliwinski@acm.org"
+        "name": "Andrew Sliwinski"
     },
     "bugs": {
         "url": "https://github.com/thisandagain/sentiment/issues"
@@ -52,13 +56,11 @@
     "main": "./lib/index.js",
     "maintainers": [
         {
-            "name": "diy",
-            "email": "help@diy.org"
+            "name": "diy"
         }
     ],
     "name": "sentiment",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/thisandagain/sentiment.git"
@@ -69,16 +71,6 @@
     "version": "4.0.0"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module sentiment](#apidoc.module.sentiment)
-
-
-
-# <a name="apidoc.module.sentiment"></a>[module sentiment](#apidoc.module.sentiment)
 
 
 
