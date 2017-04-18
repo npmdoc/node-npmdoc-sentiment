@@ -61,12 +61,205 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.sentiment">module sentiment</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sentiment.sentiment">
+            function <span class="apidocSignatureSpan"></span>sentiment
+            <span class="apidocSignatureSpan">(phrase, inject, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sentiment.toString">
+            function <span class="apidocSignatureSpan">sentiment.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sentiment.tokenize">
+            function <span class="apidocSignatureSpan">sentiment.</span>tokenize
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sentiment.toString">module sentiment.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sentiment.toString.toString">
+            function <span class="apidocSignatureSpan">sentiment.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sentiment.tokenize">module sentiment.tokenize</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sentiment.tokenize.tokenize">
+            function <span class="apidocSignatureSpan">sentiment.</span>tokenize
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.sentiment" id="apidoc.module.sentiment">module sentiment</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sentiment.sentiment" id="apidoc.element.sentiment.sentiment">
+        function <span class="apidocSignatureSpan"></span>sentiment
+        <span class="apidocSignatureSpan">(phrase, inject, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sentiment = function (phrase, inject, callback) {
+    // Parse arguments
+    if (typeof phrase === &#x27;undefined&#x27;) phrase = &#x27;&#x27;;
+    if (typeof inject === &#x27;undefined&#x27;) inject = null;
+    if (typeof inject === &#x27;function&#x27;) callback = inject;
+    if (typeof callback === &#x27;undefined&#x27;) callback = null;
+
+    // Merge
+    if (inject !== null) {
+        afinn = Object.assign(afinn, inject);
+    }
+
+    // Storage objects
+    var tokens      = tokenize(phrase),
+        score       = 0,
+        words       = [],
+        positive    = [],
+        negative    = [];
+
+    // Iterate over tokens
+    var len = tokens.length;
+    while (len--) {
+        var obj = tokens[len];
+        var item = afinn[obj];
+        if (!afinn.hasOwnProperty(obj)) continue;
+
+        // Check for negation
+        if (len &#x3e; 0) {
+            var prevtoken = tokens[len-1];
+            if (negators[prevtoken]) item = -item;
+        }
+
+        words.push(obj);
+        if (item &#x3e; 0) positive.push(obj);
+        if (item &#x3c; 0) negative.push(obj);
+
+        score += item;
+    }
+
+    // Handle optional async interface
+    var result = {
+        score:          score,
+        comparative:    tokens.length &#x3e; 0 ? score / tokens.length : 0,
+        tokens:         tokens,
+        words:          words,
+        positive:       positive,
+        negative:       negative
+    };
+
+    if (callback === null) return result;
+    process.nextTick(function () {
+        callback(null, result);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sentiment.toString" id="apidoc.element.sentiment.toString">
+        function <span class="apidocSignatureSpan">sentiment.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sentiment.tokenize" id="apidoc.element.sentiment.tokenize">
+        function <span class="apidocSignatureSpan">sentiment.</span>tokenize
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">tokenize = function (input) {
+    return input
+        .toLowerCase()
+        .replace(/[.,\/#!$%\^&#x26;\*;:{}=_`\&#x22;~()]/g, &#x27;&#x27;)
+        .split(&#x27; &#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sentiment.toString" id="apidoc.module.sentiment.toString">module sentiment.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sentiment.toString.toString" id="apidoc.element.sentiment.toString.toString">
+        function <span class="apidocSignatureSpan">sentiment.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sentiment.tokenize" id="apidoc.module.sentiment.tokenize">module sentiment.tokenize</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sentiment.tokenize.tokenize" id="apidoc.element.sentiment.tokenize.tokenize">
+        function <span class="apidocSignatureSpan">sentiment.</span>tokenize
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">tokenize = function (input) {
+    return input
+        .toLowerCase()
+        .replace(/[.,\/#!$%\^&#x26;\*;:{}=_`\&#x22;~()]/g, &#x27;&#x27;)
+        .split(&#x27; &#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 
